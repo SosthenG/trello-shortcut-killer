@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Trello Shortcuts Killer",
+  "version": "1.0.0",
+  "description": "Remove shortcuts from Trello for people who don't use them",
+  "host_permissions": [
+    "*://trello.com/*"
+  ],
+  "icons": {
+    "48": "icon_48.png",
+    "128": "icon_128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://trello.com/*"
+      ],
+      "js": [
+        "script.js"
+      ]
+    }
+  ],
+  "author": "Sosthèn Gaillard"
+}
