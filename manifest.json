@@ -6,6 +6,10 @@
   "permissions": [
     "*://trello.com/*"
   ],
+  "icons": {
+    "48": "icon_48.png",
+    "128": "icon_128.png"
+  },
   "content_scripts": [
     {
       "matches": [
