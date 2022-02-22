@@ -1,5 +1,8 @@
 # Trello Shortcuts Killer
 
+[Download on addons.mozilla.org](https://addons.mozilla.org/fr/firefox/addon/trello-shortcuts-killer/)
+
+
 Remove shortcuts from Trello for people who don't use them.
 
 Trello shortcuts can be dangerous because they are very easy to make by mistake and can heavily alter cards.
