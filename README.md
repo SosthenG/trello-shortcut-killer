@@ -2,7 +2,12 @@
 
 [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/SosthenG/trello-shortcut-killer/blob/master/LICENSE.md)
 
-[![Mozilla Add-on](https://img.shields.io/amo/dw/trello-shortcuts-killer)](https://addons.mozilla.org/firefox/addon/trello-shortcuts-killer/) [Download on addons.mozilla.org](https://addons.mozilla.org/firefox/addon/trello-shortcuts-killer/) 
+[![](https://img.shields.io/chrome-web-store/v/feabcbdhaecgmefkmiblohaniammgifg.svg?logo=google-chrome&style=flat)](https://chrome.google.com/webstore/detail/trello-shortcuts-killer/feabcbdhaecgmefkmiblohaniammgifg) [![](https://img.shields.io/chrome-web-store/rating/feabcbdhaecgmefkmiblohaniammgifg.svg?logo=google-chrome&style=flat)](https://chrome.google.com/webstore/detail/trello-shortcuts-killer/feabcbdhaecgmefkmiblohaniammgifg) [![](https://img.shields.io/chrome-web-store/users/feabcbdhaecgmefkmiblohaniammgifg.svg?logo=google-chrome&style=flat)](https://chrome.google.com/webstore/detail/trello-shortcuts-killer/feabcbdhaecgmefkmiblohaniammgifg)
+
+[![](https://img.shields.io/amo/v/trello-shortcuts-killer.svg?logo=firefox&style=flat)](https://addons.mozilla.org/firefox/addon/trello-shortcuts-killer/) [![](https://img.shields.io/amo/rating/trello-shortcuts-killer.svg?logo=firefox&style=flat)](https://addons.mozilla.org//firefox/addon/trello-shortcuts-killer/) [![](https://img.shields.io/amo/users/trello-shortcuts-killer.svg?logo=firefox&style=flat)](https://addons.mozilla.org/firefox/addon/trello-shortcuts-killer/)
+
+
+Download for [Firefox](https://addons.mozilla.org/firefox/addon/trello-shortcuts-killer/) or [Google Chrome](https://chrome.google.com/webstore/detail/trello-shortcuts-killer/feabcbdhaecgmefkmiblohaniammgifg)
 
 Remove shortcuts from Trello for people who don't use them.
 
