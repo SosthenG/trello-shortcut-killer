@@ -25,10 +25,9 @@ jobs:
       - name: Check current version
         uses: actions-ecosystem/action-get-latest-tag@v1
         id: latest_version
-      - name: Check version is new
-        if: ${{ steps.version.outputs.prop != steps.latest_version.outputs.tag }}
       - name: Release
         uses: softprops/action-gh-release@v1
+        if: ${{ steps.version.outputs.prop != steps.latest_version.outputs.tag }}
         with:
           generate_release_notes: true
           fail_on_unmatched_files: true
