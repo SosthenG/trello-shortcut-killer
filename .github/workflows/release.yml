@@ -22,12 +22,17 @@ jobs:
         with: 
             path: 'manifest.json'
             prop_path: 'version'
-      - name: Check current version
+      - name: Get current version
         uses: actions-ecosystem/action-get-latest-tag@v1
         id: latest_version
+      - name: Verify new version
+        if: ${{ steps.version.outputs.prop <= steps.latest_version.outputs.tag }}
+        uses: actions/github-script@v3
+        with:
+          script: |
+              core.setFailed('New version ${{ steps.version.outputs.prop }} should be greated than old version ${{ steps.latest_version.outputs.tag }}')
       - name: Release
         uses: softprops/action-gh-release@v1
-        if: ${{ steps.version.outputs.prop != steps.latest_version.outputs.tag }}
         with:
           generate_release_notes: true
           fail_on_unmatched_files: true
