@@ -1,9 +1,9 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Trello Shortcuts Killer",
   "version": "1.0.2",
   "description": "Remove shortcuts from Trello for people who don't use them",
-  "permissions": [
+  "host_permissions": [
     "*://trello.com/*"
   ],
   "icons": {
