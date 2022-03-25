@@ -1,0 +1,39 @@
+name: Release workflow
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:        
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install zip
+        uses: montudor/action-zip@v1
+      - name: Build
+        run: ./build.sh
+      - name: Get version
+        id: version
+        uses: notiz-dev/github-action-json-property@release
+        with: 
+            path: 'manifest.json'
+            prop_path: 'version'
+      - name: Check current version
+        uses: actions-ecosystem/action-get-latest-tag@v1
+        id: latest_version
+      - name: Check version is new
+        if: ${{ steps.version.outputs.prop != steps.latest_version.outputs.tag }}
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+          name: ${{ steps.version.outputs.prop }}
+          tag_name: ${{ steps.version.outputs.prop }}
+          files: |
+            firefox.zip
+            chrome.zip
