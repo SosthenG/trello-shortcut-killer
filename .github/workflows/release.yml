@@ -4,20 +4,38 @@ on:
   push:
     branches:
       - master
-  workflow_dispatch:
 
 jobs:        
-  build:
+  release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Install zip
+      - name: Zip chrome
         uses: montudor/action-zip@v1
-      - name: Build
-        run: ./build.sh
-      - name: Get version
-        id: version
+        with:
+          args: zip -r ./chrome.zip ./* -x .gitignore -x .github -x .git -x *.zip
+      - name: Change manifest version
+        uses: jacobtomlinson/gha-find-replace@v2
+        with:
+          include: 'manifest.json'
+          find: '"manifest_version": 3,'
+          replace: '"manifest_version": 2,'
+          regex: false
+      - name: Change host_permissions
+        uses: jacobtomlinson/gha-find-replace@v2
+        with:
+          include: 'manifest.json'
+          find: 'host_permissions'
+          replace: 'permissions'
+          regex: false
+      - name: Zip firefox
+        uses: montudor/action-zip@v1
+        with:
+          args: zip -r ./firefox.zip ./* -x .gitignore -x .github -x .git -x *.zip
+  
+      - name: Get new version
+        id: new_version
         uses: notiz-dev/github-action-json-property@release
         with: 
             path: 'manifest.json'
@@ -26,18 +44,18 @@ jobs:
         uses: actions-ecosystem/action-get-latest-tag@v1
         id: latest_version
       - name: Verify new version
-        if: ${{ steps.version.outputs.prop <= steps.latest_version.outputs.tag }}
+        if: ${{ steps.new_version.outputs.prop <= steps.latest_version.outputs.tag }}
         uses: actions/github-script@v3
         with:
           script: |
-              core.setFailed('New version ${{ steps.version.outputs.prop }} should be greated than old version ${{ steps.latest_version.outputs.tag }}')
+              core.setFailed('New version ${{ steps.new_version.outputs.prop }} should be greated than old version ${{ steps.latest_version.outputs.tag }}')
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
           generate_release_notes: true
           fail_on_unmatched_files: true
-          name: ${{ steps.version.outputs.prop }}
-          tag_name: ${{ steps.version.outputs.prop }}
+          name: ${{ steps.new_version.outputs.prop }}
+          tag_name: ${{ steps.new_version.outputs.prop }}
           files: |
             firefox.zip
             chrome.zip
